@@ -1,5 +1,6 @@
-//import Ember from 'ember';
-import LayerControl from 'ember-leaflet/components/base-layer';
+import Ember from 'ember';
+import L from 'ember-leaflet';
+import BaseLayer from 'ember-leaflet/components/base-layer';
 
 const {get} = Ember;
 
@@ -9,6 +10,6 @@ export default BaseLayer.extend({
   ],
 
   createLayer(){
-		return new L.Control.Measure(this.get('options'));
+		return new L.Control.Measure(get('options'));
 	}
 });
