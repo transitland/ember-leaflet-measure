@@ -1,15 +1,26 @@
 import Ember from 'ember';
-import L from 'ember-leaflet';
 import BaseLayer from 'ember-leaflet/components/base-layer';
 
 const {get} = Ember;
 
 export default BaseLayer.extend({
+  // TODO add more measure options
   leafletOptions: [
-    'position'
+    'position',
+    'primaryLengthUnit'
   ],
 
+  layerSetup() {
+    this._layer = this.createLayer();
+    this._addObservers();
+    this._addEventListeners();
+    if (get(this,'containerLayer')) {
+    	this._layer.addTo(get(this,'containerLayer')._layer);
+    }
+    this.didCreateLayer();
+	},
+
   createLayer(){
-		return new L.Control.Measure(get('options'));
+		return this.L.control.measure(get(this, 'options'));
 	}
 });
