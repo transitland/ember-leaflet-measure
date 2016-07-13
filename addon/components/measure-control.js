@@ -7,7 +7,8 @@ export default BaseLayer.extend({
   // TODO add more measure options
   leafletOptions: [
     'position',
-    'primaryLengthUnit'
+    'primaryLengthUnit',
+    'secondaryLengthUnit'
   ],
 
   layerSetup() {
